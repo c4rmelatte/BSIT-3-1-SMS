@@ -1,0 +1,1 @@
+lagay niyo dito lahat ng components para hindi magulo like navbar, footer.
