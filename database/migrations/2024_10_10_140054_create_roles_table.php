@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('roles', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->longText('description');
+            $table->unsignedInteger('year_level')->nullable();
+            $table->integer('department_id');
+            $table->foreign('department_id')->references('id')->on('department');
             $table->timestamps();
         });
     }
