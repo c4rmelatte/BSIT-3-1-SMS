@@ -1,0 +1,1 @@
+Dito kayo mag add ng components tulad ng isang set lang ng <div>
