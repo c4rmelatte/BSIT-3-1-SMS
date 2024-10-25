@@ -3,93 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Dashboard</title>
-    <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <style>
-        /* Include basic CSS for the dashboard layout */
         body {
             margin: 0;
+            padding: 0;
             font-family: Arial, sans-serif;
         }
-
         .sidebar {
-            width: 250px;
+            background-color: #20342b;
+            width: 220px;
             height: 100vh;
-            background-color: #2c3e50;
-            color: #fff;
             position: fixed;
             top: 0;
             left: 0;
             padding-top: 20px;
+            color: white;
         }
-
+        .sidebar img {
+            width: 80px;
+            margin: 0 auto;
+            display: block;
+            border-radius: 50%;
+        }
         .sidebar ul {
-            list-style-type: none;
-            padding: 0;
+            list-style: none;
+            padding-left: 0;
+            margin-top: 30px;
         }
-
         .sidebar ul li {
-            padding: 15px 20px;
+            padding: 10px 20px;
+            margin-bottom: 10px;
+            color: #9db3a4;
+            display: flex;
+            align-items: center;
         }
-
         .sidebar ul li:hover {
-            background-color: #34495e;
+            background-color: #325b48;
+            color: #fff;
             cursor: pointer;
         }
-
-        .sidebar ul li a {
+        .sidebar ul li.active {
             color: #fff;
-            text-decoration: none;
+            font-weight: bold;
+        }
+        .sidebar ul li i {
+            margin-right: 10px;
         }
 
-        .main-content {
-            margin-left: 250px;
+        .content {
+            margin-left: 220px;
             padding: 20px;
         }
 
-        .navbar {
-            background-color: #ecf0f1;
-            padding: 10px;
+        .content .header {
+            background-color: #f9fafb;
+            padding: 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            border-bottom: 1px solid #ddd;
         }
 
-        .navbar .user-profile {
+        .content .header h2 {
+            margin: 0;
+        }
+
+        .user-info {
             display: flex;
             align-items: center;
         }
 
-        .navbar .user-profile img {
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
+        .user-info span {
             margin-right: 10px;
+        }
+
+        .user-info img {
+            width: 40px;
+            border-radius: 50%;
         }
     </style>
 </head>
 <body>
     <div class="sidebar">
+        <img src="https://via.placeholder.com/80" alt="Logo">
         <ul>
-            <li><a href="#">Announcement</a></li>
-            <li><a href="#">Building</a></li>
-            <li><a href="#">Departments</a></li>
-            <li><a href="#">Courses</a></li>
-            <li><a href="#">Curriculum</a></li>
-            <li><a href="#">Subject</a></li>
+            <li class="active">Announcements</li>
+            <li>Building</li>
+            <li>Departments</li>
+            <li>Courses</li>
+            <li>Classroom</li>
+            <li>Subject</li>
         </ul>
     </div>
 
-    <div class="main-content">
-        <div class="navbar">
-            <h1>Dashboard</h1>
-            <div class="user-profile">
-                <img src="{{ asset('images/profile-placeholder.png') }}" alt="User">
-                <span>Archie Dela Cruz</span>
+    <div class="content">
+        <div class="header">
+            <h2>DASHBOARD</h2>
+            <div class="user-info">
+                <span>Amelia Martin</span>
+                <img src="https://via.placeholder.com/40" alt="User Avatar">
             </div>
         </div>
 
-        <!-- Content will go here -->
+        <div class="main-content">
+            <!-- Add your main content here -->
+        </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

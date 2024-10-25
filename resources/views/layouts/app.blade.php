@@ -3,56 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Dashboard</title>
-    <!-- Add your CSS links here -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .sidebar {
+            background-color: #20342b;
+            width: 220px;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding-top: 20px;
+            color: white;
+        }
+        .sidebar img {
+            width: 80px;
+            margin: 0 auto;
+            display: block;
+            border-radius: 50%;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 30px;
+        }
+        .sidebar ul li {
+            padding: 10px 20px;
+            margin-bottom: 10px;
+            color: #9db3a4;
+            display: flex;
+            align-items: center;
+        }
+        .sidebar ul li:hover {
+            background-color: #325b48;
+            color: #fff;
+            cursor: pointer;
+        }
+        .sidebar ul li.active {
+            color: #fff;
+            font-weight: bold;
+        }
+        .sidebar ul li i {
+            margin-right: 10px;
+        }
+
+        .content {
+            margin-left: 220px;
+            padding: 20px;
+        }
+
+        .content .header {
+            background-color: #f9fafb;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .content .header h2 {
+            margin: 0;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .user-info span {
+            margin-right: 10px;
+        }
+
+        .user-info img {
+            width: 40px;
+            border-radius: 50%;
+        }
+    </style>
 </head>
 <body>
-    <div class="d-flex">
-        <!-- Sidebar -->
-        <div class="sidebar bg-dark text-light p-3" style="width: 250px; height: 100vh;">
-            <div class="sidebar-header">
-                <img src="{{ asset('path-to-logo') }}" alt="Logo" class="img-fluid mb-4" style="max-width: 100px;">
+    <div class="sidebar">
+        <img src="https://pbs.twimg.com/profile_images/1394838411203158020/hUJh2MDa_400x400.png" alt="Logo">
+        <ul>
+            <li class="active">Announcements</li>
+            <li>Building</li>
+            <li>Departments</li>
+            <li>Courses</li>
+            <li>Classroom</li>
+            <li>Subject</li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <div class="header">
+            <h2>DASHBOARD</h2>
+            <div class="user-info">
+                <span>Amelia Martin</span>
+                <img src="https://cdn-icons-png.flaticon.com/512/1144/1144760.png" alt="User Avatar">
             </div>
-            <ul class="nav flex-column">
-                <li class="nav-item">
-                    <a class="nav-link text-light" href="{{ route('announcement') }}">Announcement</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-light" href="{{ route('building') }}">Building</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-light" href="{{ route('departments') }}">Departments</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-light" href="{{ route('courses') }}">Courses</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-light" href="{{ route('curriculum') }}">Curriculum</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-light" href="{{ route('subject') }}">Subject</a>
-                </li>
-            </ul>
         </div>
 
-        <!-- Main Content -->
-        <div class="content p-4" style="flex-grow: 1;">
-            <!-- Navbar -->
-            <div class="d-flex justify-content-end mb-4">
-                <div class="user-profile d-flex align-items-center">
-                    <img src="{{ asset('path-to-user-image') }}" alt="User" class="rounded-circle me-2" style="width: 40px;">
-                    <span>{{ Auth::user()->name }}</span>
-                </div>
-            </div>
-
-            <!-- Dynamic Content -->
-            @yield('content')
+        <div class="main-content">
+            <!-- Add your main content here -->
         </div>
     </div>
 
-    <!-- Add your JS scripts here -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
