@@ -60,30 +60,8 @@
             <img src="images/logo.png" alt="Logo" class="logo">
         </a>
         <hr>
-        <a href="#" class="nav-link">SCHEDULE</a>
-        <a href="#" class="nav-link">ATTENDANCE</a>
+        <a href="{{url ('/employee-dashboard')}}" class="nav-link">ANNOUNCEMENT</a>
+        <a href="#" class="nav-link">EMPLOYEE</a>
 
-        <!-- Dropdown for LEARN -->
-        <div class="nav-item">
-            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="collapse" data-bs-target="#learnDropdown" aria-expanded="false">
-                LEARN
-            </a>
-            <div class="collapse" id="learnDropdown">
-                <a href="#" class="nav-link ps-4">Activities</a>
-                <a href="#" class="nav-link ps-4">Quizzes</a>
-                <a href="#" class="nav-link ps-4">Grades</a>
-            </div>
-        </div>
 
-        <!-- Dropdown for ABOUT -->
-        <div class="nav-item">
-            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="collapse" data-bs-target="#aboutDropdown" aria-expanded="false">
-                ABOUT
-            </a>
-            <div class="collapse" id="aboutDropdown">
-                <a href="#" class="nav-link ps-4">History</a>
-                <a href="#" class="nav-link ps-4">Team</a>
-                <a href="#" class="nav-link ps-4">Mission</a>
-            </div>
-        </div>
     </div>

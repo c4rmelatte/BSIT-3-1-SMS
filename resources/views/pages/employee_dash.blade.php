@@ -2,6 +2,7 @@
 
 @section('content')
     @include('components.include.hrsidebar')
-    @include('components.include.hrnavbar')
+    @include('components.include.employee_nav_bar')
+ 
 
 @endsection
