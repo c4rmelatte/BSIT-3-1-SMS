@@ -56,12 +56,12 @@
 
     <!-- Sidebar -->
     <div class="sidebar">
-        <a href="/" class="logo-link">
+        <a href="{{url ('/hr-dashboard')}}" class="logo-link">
             <img src="images/logo.png" alt="Logo" class="logo">
         </a>
         <hr>
-        <a href="{{url ('/employee-dashboard')}}" class="nav-link">ANNOUNCEMENT</a>
-        <a href="#" class="nav-link">EMPLOYEE</a>
+        <a href="#" class="nav-link">ANNOUNCEMENT</a>
+        <a href="{{url ('/employee-dashboard')}}" class="nav-link">EMPLOYEE</a>
 
 
     </div>

@@ -13,7 +13,7 @@ class EmployeesController extends Controller
      */
     public function index()
     {
-        //
+        return view('pages.employee_dash');
     }
 
     /**
@@ -37,7 +37,7 @@ class EmployeesController extends Controller
      */
     public function show(Employees $employees)
     {
-        //
+        return view('pages.employee_list');
     }
 
     /**
@@ -63,4 +63,8 @@ class EmployeesController extends Controller
     {
         //
     }
+
+
+
 }
+
