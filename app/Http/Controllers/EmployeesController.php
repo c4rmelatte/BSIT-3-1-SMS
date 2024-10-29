@@ -40,6 +40,11 @@ class EmployeesController extends Controller
         return view('pages.employee_list');
     }
 
+    public function info(Employees $employees)
+    {
+        return view('pages.employee_information');
+    }
+
     /**
      * Show the form for editing the specified resource.
      */

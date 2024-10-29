@@ -11,3 +11,4 @@ Route::get('/', function () {
 Route::get('/hr-dashboard', [HrDashboardController::class, 'index']);
 Route::get('/employee-dashboard', [EmployeesController::class, 'index']);
 Route::get('/employee-list', [EmployeesController::class, 'show']);
+Route::get('/employee-info', [EmployeesController::class, 'info']);

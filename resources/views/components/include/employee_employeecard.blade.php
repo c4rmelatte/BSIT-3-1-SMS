@@ -29,12 +29,15 @@
     }
 </style>
 
-
+    
     <div class="col-md-12 mb-5">
+    <a href="{{url ('/employee-info')}}" class="text-decoration-none">
         <div class="container-fluid bg-light shadow p-4 rounded-3 d-flex justify-content-between align-items-center">
-            <div class="">
+            <div class=""> 
                 <h4 class="ms-3 italic">Engr. Ryan De Lara  </h4>
                 <p class="ms-3 italic">Dean</p>
+                
+           
             </div>
             <div class="d-flex gap-3">  
                 <a href="#" class="bg" >
@@ -45,7 +48,9 @@
                 </a> 
             </div>
         </div>
+        </a>
     </div>
+   
 
     <div class="col-md-12 mb-5">
         <div class="container-fluid bg-light shadow p-4 rounded-3 d-flex justify-content-between align-items-center">
@@ -68,7 +73,7 @@
         <div class="container-fluid bg-light shadow p-4 rounded-3 d-flex justify-content-between align-items-center">
             <div class="">
                 <h4 class="ms-3 italic">Randy Sansait</h4>
-                <p class="ms-3 italic">Proffessor</p>
+                <p class="ms-3 italic">Professor</p>
             </div>
             <div class="d-flex gap-3">  
                 <a href="#" class="bg" >
