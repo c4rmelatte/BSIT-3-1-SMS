@@ -1,0 +1,41 @@
+
+body{
+    background-color: #F3F2ED;
+    margin: 0;
+}
+
+h1{
+    color: rgb(0, 0, 0);
+}
+.container{
+    height: 250px;
+    width: 400px;
+    background-color: #fff4d5;
+    border-radius: 15px;
+    margin-top: 150px;
+    box-shadow: 3px 3px 3px rgb(228, 228, 228);
+    
+}
+
+.details {
+    display: flex;
+    justify-content: space-evenly;
+    
+}
+
+a {
+    background-color: #E8CE83;
+    height: 30px;
+    width: 70px;
+    border-radius: 5px;
+    
+}
+.container a{
+    color: rgb(8, 7, 7);
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin-top: 100px;
+
+
+}   

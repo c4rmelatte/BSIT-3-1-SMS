@@ -12,11 +12,15 @@
 <body>
 <header> 
     <!-- navbar here -->
+   
 </header>
 
 
 <main>
     <!--body of chr-->
+    <div class="container">
+        @yield('content')
+    </div>
 </main>
 
 <footer>

@@ -13,15 +13,16 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            
-            $table->string("name");
-            $table->decimal("price");
-            $table->decimal("amount");
+            $table->string("name")->nullable(); // Allow null values
+            $table->decimal("price", 10, 2); // Precision and scale
+            $table->decimal("amount", 10, 2); // Precision and scale
             $table->string("purpose");
-            $table->decimal("balance");
-            $table->decimal("change");
-            $table->unsignedInteger("user_id");
-            $table->boolean("isFullyPaid");
+            $table->decimal("balance", 10, 2); // Precision and scale
+            $table->decimal("change", 10, 2); // Precision and scale
+            // $table->unsignedBigInteger("product_id")->nullable(); // Add product_id
+            // $table->unsignedInteger("user_id")->nullable(); // Allow null values
+            // $table->foreign("user_id")->references("id")->on("users")->onDelete("cascade"); // Foreign key constraint
+            $table->boolean("isPaid")->default(false); // Default value
             $table->timestamps();
             
         });
