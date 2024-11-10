@@ -10,7 +10,7 @@ class LoginController extends Controller
     // Show login form
     public function showLoginForm()
     {
-        return view('page.login'); // Adjust this path if needed
+        return view('layouts.login'); // Adjust this path if needed
     }
 
     // Process login form submission

@@ -28,6 +28,16 @@
     <article class="p-4 shadow h-75 w-25 rounded-4">
         <h1 class="text-center mt-5 fw-bold">Login</h1>
 
+
+        @if ($errors->any())
+        <div class="alert alert-danger mt-3">
+            @foreach ($errors->all() as $error)
+                <p>{{ $error }}</p>
+            @endforeach
+        </div>
+    @endif
+    
+
         <!-- form -->
         <form action="{{ route('login.submit') }}" method="POST" class="mt-5">
             @csrf
@@ -39,13 +49,13 @@
                 <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password" required>
                 <label for="floatingPassword">Password</label>
             </div>
-            <p class="fw-semibold mt-3 text-end"><small><a href="">Forget Password?</a></small></p>
-            <button type="submit" class="fw-bold rounded-4 mt-4 w-100">
-                LOGIN
-            </button>
+            <button type="submit" class="fw-bold rounded-4 mt-4 w-100">LOGIN</button>
         </form>
+        
 
-        <p class="fw-semibold text-center mt-2"><small>New here? Create an account</small></p>
+    <p class="fw-semibold text-center mt-2"><small>New here? <a href="{{ route('register') }}">Create an account</a></small></p>
+
+
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
     </article>
 </section>

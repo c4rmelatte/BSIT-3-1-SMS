@@ -171,6 +171,9 @@ return [
 
     'secure' => env('SESSION_SECURE_COOKIE'),
 
+    'driver' => 'file',  // or 'database'
+
+
     /*
     |--------------------------------------------------------------------------
     | HTTP Access Only
