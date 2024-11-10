@@ -25,6 +25,7 @@
         box-shadow: 20px 10px 20px rgba(0, 0, 0, 0.2);
     }
 
+
     .image-section {
         flex: 1;
         display: flex;
@@ -92,7 +93,7 @@
             <h1 class="fs-3 mt-5">Hello, Welcome to reWOP!</h1>
             <p class="fs-5">Where excellence meets me at the corner</p>
             <a href="{{ url('teacherdash') }}" class="btn-custom fs-3 mb-4 text-decoration-none">Teacher</a>
-            <a href="{{ url('/admindash') }}" class="btn-custom fs-3 mb-4 text-decoration-none">Admin</a>
+            <a href="{{ url('/login') }}" class="btn-custom fs-3 mb-4 text-decoration-none">Admin</a>
             <a href="{{ url('/studentdash') }}" class="btn-custom fs-3 mb-4 text-decoration-none">Student</a>
         </div>
     </div>

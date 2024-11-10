@@ -132,14 +132,13 @@
             <img src="css/images/logo.png" alt="Logo" class="logo">
         </a>
         <hr>
-        <a href="#" class="nav-link">ANNOUNCEMENT</a>
 
         <!-- Dropdown for LEARN -->
         <div class="nav-item">
-            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="collapse" data-bs-target="#learnDropdown" aria-expanded="false">
-                DEPARTMENT
+            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="collapse" data-bs-target="#payslipDropdown" aria-expanded="false">
+                PAYSLIP
             </a>
-            <div class="collapse" id="learnDropdown">
+            <div class="collapse" id="payslipDropdown">
                 <a href="#" class="nav-link ps-4">HIGH SCHOOL</a>
                 <a href="#" class="nav-link ps-4">COLLEGE</a>
                
@@ -149,7 +148,7 @@
         <!-- Dropdown for ABOUT -->
         <div class="nav-item">
             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="collapse" data-bs-target="#aboutDropdown" aria-expanded="false">
-                COURSES
+                DTR
             </a>
             <div class="collapse" id="aboutDropdown">
                 <a href="#" class="nav-link ps-4">History</a>
@@ -159,26 +158,32 @@
         </div>
 
         <div class="nav-item">
-            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="collapse" data-bs-target="#aboutDropdown" aria-expanded="false">
-               SUBJECTS
+            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="collapse" data-bs-target="#deptDropdown" aria-expanded="false">
+               DEPARTMENT
             </a>
-            <div class="collapse" id="aboutDropdown">
-                <a href="#" class="nav-link ps-4">History</a>
-                <a href="#" class="nav-link ps-4">Team</a>
-                <a href="#" class="nav-link ps-4">Mission</a>
+            <div class="collapse" id="deptDropdown">
+                <a href="#" class="nav-link ps-4">Create Building</a>
             </div>
         </div>
 
         <div class="nav-item">
-            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="collapse" data-bs-target="#aboutDropdown" aria-expanded="false">
-                CURRICULUM
+            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="collapse" data-bs-target="#enrollDropdown" aria-expanded="false">
+               ENROLLMENT
             </a>
-            <div class="collapse" id="aboutDropdown">
-                <a href="#" class="nav-link ps-4">History</a>
-                <a href="#" class="nav-link ps-4">Team</a>
-                <a href="#" class="nav-link ps-4">Mission</a>
+            <div class="collapse" id="enrollDropdown">
+                <a href="#" class="nav-link ps-4">Enroll Student</a>
             </div>
         </div>
+
+        <div class="nav-item">
+            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="collapse" data-bs-target="#curriDropdown" aria-expanded="false">
+               CURRICULUM
+            </a>
+            <div class="collapse" id="curriDropdown">
+                <a href="#" class="nav-link ps-4">Subject</a>
+            </div>
+        </div>
+
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
