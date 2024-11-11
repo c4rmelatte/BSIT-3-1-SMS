@@ -10,9 +10,11 @@ class grades extends Model
     use HasFactory;
 
     protected $fillable = [
+        'user_id',
         'final_grade',
         'final_point',
         'term',
         'year',
+        'employee_id'
     ];
 }

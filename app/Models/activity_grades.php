@@ -13,5 +13,7 @@ class activity_grades extends Model
         'percentage',
         'grade_acquired',
         'activity_type',
+        'grade_id',
+        'activity_id'
     ];
 }
