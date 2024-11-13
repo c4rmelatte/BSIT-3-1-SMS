@@ -12,6 +12,7 @@ class GradeController extends Controller
      */
     public function index()
     {
+        return view('pages.creategrade');
         $grades = grades::get();
         return $grades;
     }

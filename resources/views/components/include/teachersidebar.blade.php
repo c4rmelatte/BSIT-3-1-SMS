@@ -71,7 +71,7 @@
             <div class="collapse" id="learnDropdown">
                 <a href="#" class="nav-link ps-4">Activities</a>
                 <a href="#" class="nav-link ps-4">Quizzes</a>
-                <a href="#" class="nav-link ps-4">Grades</a>
+                <a href="{{ url('/creategrade') }}" class="nav-link ps-4">Grades</a>
             </div>
         </div>
 

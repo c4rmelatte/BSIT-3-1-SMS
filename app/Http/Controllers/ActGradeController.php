@@ -11,8 +11,10 @@ class ActGradeController extends Controller
      */
     public function index()
     {
+        return view('pages.createact');
         $type = activity_grades::get();
         return $type;
+       
     }
 
     /**
