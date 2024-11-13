@@ -1,5 +1,3 @@
-@section('content')
-
 
 <!-- UNDER CONSTRUCTION -->
 <div class="container">
@@ -18,4 +16,3 @@
         <button type="submit" class="btn btn-primary">Update Announcement</button>
     </form>
 </div>
-@endsection

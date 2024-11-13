@@ -61,7 +61,7 @@
                 <a href="{{ route('pay_misc') }}" class="mb-4">Pay here</a>
                 <hr>
                 <h2>Tuition</h2>
-                <a href="{{url('/payment')}}">Pay here</a>
+                <a href="{{route('pay_tuit')}}">Pay here</a>
             </div>
         </div>
     </div>

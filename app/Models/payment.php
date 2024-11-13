@@ -15,8 +15,8 @@ class payment extends Model
         'product_id',
         'purpose',
         'price',
-        'isPaid',
-        'balance',
-        'change'
+        'change',
+        'type',
+        'isPaid'
     ];
 }

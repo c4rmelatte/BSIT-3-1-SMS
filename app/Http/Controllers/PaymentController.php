@@ -4,28 +4,50 @@ namespace App\Http\Controllers;
 
 use App\Models\Payment;
 use App\Models\Purpose;
-
+use App\Models\totalFunds;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class PaymentController extends Controller
 {
-    public function index()
+    public function index1()
     {
         $products = Purpose::all();
-        return view('pages.studentpayment', compact('products'));
+        $payments = Payment::all();
+        return view('pages.studentpaymentmisc', compact('products'));
+    }
+    public function index2()
+    {
+        $products = Purpose::all();
+        $payments = Payment::all();
+        return view('pages.studentpaymenttuition', compact('products'));
     }
 
-    public function payMisc()
+    public function history() {
+        $users = User::all();
+        $payments = Payment::all()->where('name', "John Doe");
+        return view('pages.paymenthistory', compact('payments'));
+    }
+
+    public function misc()
     {
         $products = Purpose::all();
-        return view('pages.studentpayment', compact('products'));
+        return view('pages.studentpaymentmisc', compact('products'));
+    }
+
+    public function tuit()
+    {
+        $products = Purpose::all();
+        return view('pages.studentpaymenttuition', compact('products'));
     }
     public function create()
     {
 
     }
-    public function pay(Request $request)
+    public function payMisc(Request $request)
     {
+        $isPaid = FALSE;
+
         $request->validate([
             'amount' => 'required|numeric|min:0', 
             'product_name' => 'required|string'
@@ -43,43 +65,105 @@ class PaymentController extends Controller
     
         $price = $product->price;
     
-        $isPaid = true;
         $change = 0;
-        $balance = 0;
-    
+        $funds = totalFunds::first();
         if ($money == $price) {
-            $isPaid = true;
-            $balance = 0;
             $change = 0;
+            $isPaid = TRUE;
         } elseif ($money < $price) {
-            $isPaid = false;
-            $balance = $price - $money;
             $change = 0;
+            return response()->json(['message' => 'Not enough money'], 404);
         } elseif ($money > $price) {
-            $isPaid = true;
             $change = $money - $price;
-            $balance = 0;
+            $isPaid = TRUE;
         }
         Payment::create([
-            'name' => null, // Ensure you have 'name' in your form
+            'name' => "John Doe", // Ensure you have 'name' in your form
             // 'user_id' => null, // Set this appropriately if needed
-            'amount' => $money,
+            'amount' => $money - $change,
             // 'product_id' => $product->id, // Assuming you have a product
             'purpose' => $product->name,
             'price' => $price,
-            'isPaid' => $isPaid,
-            'balance' => $balance,
             'change' => $change,
+            'type' => 'miscellaneous',
+            'isPaid' => $isPaid
         ]);
 
+        $totalAmount = $money - $change;
 
-    
-        return response()->json([
-            'message' => $isPaid ? 'Payment successful!' : 'Insufficient funds!',
-            'isPaid' => $isPaid,
-            'balance' => $balance,
-            'change' => $change,
-        ]);
-        // return redirect()->route('dashboard');
+         $funds->increment(
+            'funds',$totalAmount
+         );
+
+        return redirect()->route('dashboard1');
     }
+
+    public function payTuit(Request $request)
+    {
+        $request->validate([
+            'amount' => 'required|numeric|min:0', 
+            'semester' => 'required|string'
+        ]);
+
+        $money = $request->input('amount');
+        $semester = $request->input('semester');
+        $price = 15000;
+        $type = 'tuition';
+        $isPaid = FALSE;
+        $change = 0;
+        $existingPayment = Payment::where('purpose', $semester)
+                            ->where('type', $type)
+                            ->where('isPaid', true)
+                            ->first();
+
+        $funds = totalFunds::first();
+        if ($money == $price) {
+            $change = $money - $price;
+            $isPaid = TRUE;
+        } elseif ($money < $price) {
+            $change =  $money - $price;
+            return response()->json(['message' => 'Not enough money'], 404);
+        } elseif ($money > $price) {
+            $change =  $money - $price;
+            $isPaid = TRUE;
+        }
+
+        if ($existingPayment) {
+            return response()->json(['message' => 'Already paid'], 404);
+        } else {
+        Payment::create([
+            
+            'name' => "John Doe", // Ensure you have 'name' in your form
+            // 'user_id' => null, // Set this appropriately if needed
+            'amount' => $money - $change,
+            // 'product_id' => $product->id, // Assuming you have a product
+            'purpose' => $semester,
+            'price' => $price,
+            'change' => $change,
+            'type' => $type,
+            'isPaid' => $isPaid
+        ]);
+    };
+
+        $totalAmount = $money - $change;
+
+         $funds->increment(
+            'funds',$totalAmount
+         );
+
+         return redirect()->route('dashboard2');
+    }
+
+    public function showReceipt($id){
+
+          
+          $payment = Payment::find($id);
+
+          if (!$payment) {
+              return redirect()->route('history')->with('error', 'Payment not found');
+          }
+  
+          return view('pages.receipt', compact('payment'));
+    }
+    
 }

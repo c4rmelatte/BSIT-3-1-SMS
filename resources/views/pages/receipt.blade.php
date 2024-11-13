@@ -2,7 +2,7 @@
 
 
 @section('content')
-    @include('components.include.payment.createpayment')
     @include('components.include.studentnavbar')
     @include('components.include.studentsidebar')
+    @include('components.include.receipt')
 @endsection

@@ -70,10 +70,8 @@
                 CREATE PAYMENT
             </a>
             <div class="collapse" id="learnDropdown">
-                <a href="{{url ('/payment')}}" class="nav-link ps-4">Create Payment</a>
-                <a href="{{url ('/payment')}}" class="nav-link ps-4">Payment History</a>
-                <a href="#" class="nav-link ps-4">Reciept</a>
-                
+            <a href="{{url ('/payment')}}" class="nav-link ps-4">Create Payment</a>
+            <a href="{{route('history')}}" class="nav-link ps-4">Payment History</a>
             </div>
         </div>
 
