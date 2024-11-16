@@ -20,15 +20,15 @@ class DTRController extends Controller
     public function checkRole(Request $request) {
 
         $request->validate([
-            'idInput' => 'required'
+             'idInput' => 'required'
         ]);
 
         $idInput = $request->input('idInput');
         $currentDateCheck = $request->input('currentDateCheck');
 
-        $employee = DB::table('example_user')->where('user_id', $idInput)->first();
+        $employee = DB::table('example_user')->where('role', '!=', 'student')->where('user_id', $idInput)->first();
 
-        if ($employee->role !== 'student') {
+        if ($employee) {
 
             $employeeCheck = DB::table('employee_dtr')->where('id_number', $idInput)->where('day', $currentDateCheck)->first();
 
@@ -48,7 +48,7 @@ class DTRController extends Controller
                                             ]);
         }
         else {
-            return redirect()->back()->with('alert', 'Cannot enter a student ID.');
+            return redirect()->back()->with('alert', 'Employee not found.');
         }
 
     }
