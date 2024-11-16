@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Announcement;
+use App\Models\Payment;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -9,7 +11,8 @@ class StudentController extends Controller
     //
     public function index()
     {
-        //
-        return view ('pages.studentdashboard');
+        $announcements = Announcement::all();
+        $payments = Payment::all();
+        return view ('pages.studentdashboard',compact('announcements','payments'));
     }
 }

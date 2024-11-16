@@ -7,6 +7,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\PurposeController;
 use App\Http\Controllers\CreatePaymentController;
 use App\Http\Controllers\HomepageController;
+use App\Http\Controllers\DTRController;
 use App\Models\User;
 
 
@@ -61,3 +62,11 @@ Route::delete('/treasurer/delete/announcement/{id}', [AdminController::class, 'd
 Route::get('/treasurer/edit/payment/{id}', [AdminController::class, 'editPayment'])->name('edit_payment');
 Route::put('/treasurer/update/payment/{id}', [AdminController::class, 'updatePayment'])->name('update_payment');
 Route::delete('/treasurer/delete/payment/{id}', [AdminController::class, 'deletePayment'])->name('delete_payment');
+
+///DTR
+
+Route::get('/treasurer/dtr', [DTRController::class, 'index'])->name('dtr_records');
+Route::get('/treasurer/dtr/delete/{id}', [DTRController::class, 'deleteDTR'])->name('delete_dtr');
+
+Route::get('/treasurer/logout', [AdminController::class, 'logout'])->name('logout');
+Route::post('/update-logout', [DTRController::class, 'updateLogout']);

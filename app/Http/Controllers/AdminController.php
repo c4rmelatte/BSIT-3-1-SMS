@@ -7,7 +7,9 @@ use App\Models\Purpose;
 use App\Models\Announcement;
 use App\Models\Payment;
 use App\Models\totalFunds;
+use App\Models\DTR;
 
+use Carbon\Carbon;
 
 class AdminController extends Controller
 {
@@ -17,7 +19,15 @@ class AdminController extends Controller
         $products = Purpose::all();
         $announcements = Announcement::all();
         $payments = Payment::all();
+        $records = DTR::all();
         $funds = totalFunds::first();
+
+        DTR::create([
+            'name' => 'John Doe',  // Assuming $user is authenticated or fetched
+            'logged_in' => Carbon::now()->toDateTimeString(),  // Current timestamp
+            'logged_out' => null,  // No logout yet
+            'date' => Carbon::today()->toDateString(),  // Today's date
+        ]);
 
         if (!$funds){
         totalFunds::create([
@@ -25,7 +35,7 @@ class AdminController extends Controller
         ]);
     }
 
-        return view('pages.admindashboard', compact('products','announcements','payments','funds'));
+        return view('pages.admindashboard', compact('products','announcements','payments','funds','records'));
     }
     public function dashboard(){
         $products = Purpose::all();
@@ -86,7 +96,8 @@ public function deletePurpose($id)
     public function storeAnnouncement(Request $request){
         Announcement::create([
             'title'=>$request->get('title'),
-            'content'=>$request->get('content')
+            'content'=>$request->get('content'),
+            'posted'=>1
         ]);
         return redirect()->route('admindashboard');
     }
@@ -103,7 +114,8 @@ public function deletePurpose($id)
     
         $announcement->update([
         'title' => $request->get('title'),
-        'content' => $request->get('content')
+        'content' => $request->get('content'),
+        'posted'=> $request->get('posted')
         ]);
 
         return redirect()->route('admindashboard')->with('success', 'Announcement updated successfully.');
@@ -125,50 +137,42 @@ public function deleteAnnouncement($id)
         return view('pages.updatepayment', compact('payment')); 
 }
 
-    public function updatePayment(Request $request, $id)
+public function updatePayment(Request $request, $id)
 {
-        $payment = Payment::findOrFail($id);
-        $amount = $request->get('amount');
-    
-        $payment->update([
-        'amount' => $request->get('amount'),
+    $payment = Payment::findOrFail($id);
+    $newAmount = $request->get('amount');
+    $oldAmount = $payment->amount;
+
+    $newPrice = $request->get('price');
+    $newChange = $newAmount - $newPrice;
+
+    $payment->update([
+        'amount' => $newAmount,
         'purpose' => $request->get('purpose'), 
-        'price' => $request->get('price'),
+        'price' => $newPrice,
         'isPaid' => $request->get('isPaid'),
-        'change' => $request->get('change')
-        ]);
+        'change' => $newChange  
+    ]);
 
-        $funds = totalFunds::first();
-        $price = $request->get('price');
+    $funds = totalFunds::first();
+    $difference = $newAmount - $oldAmount;
 
-        
-        if ($funds) {
-            // Subtract the payment amount from the funds
-            $funds->increment(
-                'funds',$amount
-            );
+    if ($funds) {
+        if ($difference < 0) {
+            $funds->decrement('funds', abs($difference));
+        } elseif ($difference > 0) {
+            $funds->increment('funds', abs($difference));
         }
+    }
 
-        // if ($newAmount < $initialAmount) {
-        //     $funds->decrement(
-        //         'funds',$newAmount
-        //     );
-        // }
-
-        // if ($newAmount > $initialAmount) {
-        //     $funds->increment(
-        //         'funds',$newAmount
-        //     );
-        // }
-
-
-        return redirect()->route('admindashboard')->with('success', 'Payment updated successfully.');
+    return redirect()->route('admindashboard')->with('success', 'Payment updated successfully.');
 }
 
-    public function deletePayment($id)
+public function deletePayment($id)
 {
         $payment = Payment::findOrFail($id);
         $payment -> delete();
+        $change = $payment->change;
    
 
         $funds = totalFunds::first();
@@ -176,14 +180,35 @@ public function deleteAnnouncement($id)
         
 
         if ($funds) {
-            // Subtract the payment amount from the funds
             $funds->decrement(
-                'funds',$amount
+                'funds',$amount - $change
             );
         }
 
     return redirect()->route('admindashboard')->with('success', 'Payment deleted successfully.');
 }
 
+ public function logout(Request $request)
+{
+    // Get the authenticated user
+    $user = auth();
+
+    // Find the latest DTR record for the user where logged_out is null
+    $dtr = DTR::where('name', "John Doe")
+              ->whereNull('logged_out')
+              ->latest('logged_in') // Ensure it picks the most recent record
+              ->first();
+
+    // if (!$dtr) {
+    //     return response()->json(['message' => 'No active session found to log out from.'], 404);
+    // }
+
+    // Update the logged_out timestamp
+    $dtr->update([
+        'logged_out' => Carbon::now(),
+    ]);
+
+    return redirect('/');
+}
 }
 

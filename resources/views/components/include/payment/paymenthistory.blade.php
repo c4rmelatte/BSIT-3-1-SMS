@@ -18,7 +18,7 @@
         <td>{{ $payment->change }}</td>
         <td>{{ $payment->type }}</td>
         <td>{{ $payment->created_at }}</td>
-        <td><a href="{{route("get_receipt",  $payment->id)}}" class="btn btn-success">Get Receipt</a></td>
+        <td><a href="{{route("get_receipt" ,  $payment->id)}}" class="btn btn-success">Get Receipt</a></td>
     </tr>
     @endforeach
 </table>

@@ -80,7 +80,7 @@ class PaymentController extends Controller
         Payment::create([
             'name' => "John Doe", // Ensure you have 'name' in your form
             // 'user_id' => null, // Set this appropriately if needed
-            'amount' => $money - $change,
+            'amount' => $money,
             // 'product_id' => $product->id, // Assuming you have a product
             'purpose' => $product->name,
             'price' => $price,
@@ -135,7 +135,7 @@ class PaymentController extends Controller
             
             'name' => "John Doe", // Ensure you have 'name' in your form
             // 'user_id' => null, // Set this appropriately if needed
-            'amount' => $money - $change,
+            'amount' => $money,
             // 'product_id' => $product->id, // Assuming you have a product
             'purpose' => $semester,
             'price' => $price,

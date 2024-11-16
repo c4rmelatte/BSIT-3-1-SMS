@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('announcements', function (Blueprint $table) {
+        Schema::create('d_t_r_s', function (Blueprint $table) {
             $table->id();
-            $table->string("title");
-            $table->String("content");
-            $table->boolean("posted");
-            $table->timestamps();
+            $table->string("name");
+            $table->timestamp("logged_in")->nullable();
+            $table->timestamp("logged_out")->nullable();
+            $table->date("date");
+            $table->timestamps(); // This adds created_at and updated_at
         });
     }
 
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('announcements');
+        Schema::dropIfExists('d_t_r_s');
     }
 };

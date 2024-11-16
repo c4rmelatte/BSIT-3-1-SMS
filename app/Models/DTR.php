@@ -3,16 +3,16 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-
 use Illuminate\Database\Eloquent\Model;
 
-class Announcement extends Model
+class DTR extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'title',
-        'content',
+        'name',
+        'logged_in',
         // 'added_by',
-        'posted'
+        'logged_out',
+        'date'
     ];
 }

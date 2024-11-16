@@ -62,6 +62,7 @@
         <hr>
         <a href="#" class="nav-link">SCHEDULE</a>
         <a href="#" class="nav-link">ATTENDANCE</a>
+        <a href="{{route('dtr_records')}}" class="nav-link">DTR</a>
 
         <!-- Dropdown for LEARN -->
         <div class="nav-item">
